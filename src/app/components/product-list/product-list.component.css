@@ -1,7 +1,8 @@
-/* Simple Product List Styles */
+/* Enhanced Product List Styles */
 .product-list {
-  padding: 40px 0;
-  background-color: #f8f9fa;
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 80vh;
 }
 
 .container {
@@ -12,68 +13,306 @@
 
 h2 {
   text-align: center;
-  font-size: 2rem;
-  color: #1f2937;
-  margin-bottom: 40px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 50px;
   font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
 }
 
+/* Enhanced Book Card */
 .book-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.out-of-stock-card {
+  opacity: 0.7;
+  filter: grayscale(20%);
+}
+
+/* Book Image with Badge */
 .book-image {
   width: 100%;
-  height: 250px;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
 }
 
 .book-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
+.book-card:hover .book-image img {
+  transform: scale(1.05);
+}
+
+.book-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #10b981;
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.book-badge.unavailable {
+  background: #ef4444;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Enhanced Book Info */
 .book-info {
-  padding: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .book-info h3 {
-  font-size: 1.2rem;
-  color: #1f2937;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
   margin: 0 0 8px 0;
+  line-height: 1.3;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  height: 3.6rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.book-info p {
-  color: #6b7280;
-  margin: 0 0 8px 0;
+.author {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0 0 12px 0;
+  font-style: italic;
+  font-weight: 500;
+  height: 1.5rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  height: 4.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Price and Stock Section */
+.price-stock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
 }
 
 .price {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin: 15px 0 !important;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e293b;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 
-button {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+.stock {
+  font-size: 0.85rem;
+  color: #059669;
   font-weight: 600;
+  padding: 4px 8px;
+  background: #d1fae5;
+  border-radius: 6px;
 }
 
-button:hover {
-  background-color: #2563eb;
+.stock.unavailable {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+/* Modern Quantity Controls */
+.quantity-section {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 8px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.quantity-controls:hover:not(.disabled) {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.quantity-controls.disabled {
+  opacity: 0.5;
+  background: #f8fafc;
+}
+
+/* Modern Quantity Buttons */
+.qty-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.qty-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.qty-btn:disabled {
+  background: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.qty-btn.decrease {
+  margin-right: 2px;
+}
+
+.qty-btn.increase {
+  margin-left: 2px;
+}
+
+/* Quantity Display */
+.quantity-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 60px;
+}
+
+.qty-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1;
+}
+
+.qty-label {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .books-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  
+  .book-info {
+    padding: 20px;
+  }
+  
+  .price-stock {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .books-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .book-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .qty-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .quantity-display {
+    padding: 0 15px;
+  }
 }

@@ -1,41 +1,121 @@
 <div class="product-list">
   <div class="container">
-    <h2>Featured Books</h2>
+    <!-- String Interpolation: Display dynamic title -->
+    <h2>{{ sectionTitle }}</h2>
     
     <div class="books-grid">
+      <!-- Book 1: Enhanced styling with better content -->
       <div class="book-card">
         <div class="book-image">
-          <img src="https://via.placeholder.com/200x300?text=The+Great+Gatsby" alt="The Great Gatsby" />
+          <img [src]="book1Image" [alt]="book1Title" />
+          <div class="book-badge" *ngIf="book1Available">Available</div>
         </div>
         <div class="book-info">
-          <h3>The Great Gatsby</h3>
-          <p>by F. Scott Fitzgerald</p>
-          <p class="price">$12.99</p>
-          <button>Add to Cart</button>
+          <h3>{{ book1Title }}</h3>
+          <p class="author">by {{ book1Author }}</p>
+          <p class="description">{{ book1Description }}</p>
+          <div class="price-stock">
+            <span class="price">${{ book1Price }}</span>
+            <span class="stock">{{ book1Stock }} in stock</span>
+          </div>
+          
+          <!-- Better Quantity Controls -->
+          <div class="quantity-section">
+            <div class="quantity-controls">
+              <button 
+                class="qty-btn decrease" 
+                [disabled]="book1Quantity <= 0" 
+                (click)="decreaseBook1Quantity()">
+                <span>−</span>
+              </button>
+              
+              <div class="quantity-display">
+                <span class="qty-number">{{ book1Quantity }}</span>
+                <span class="qty-label">qty</span>
+              </div>
+              
+              <button 
+                class="qty-btn increase" 
+                [disabled]="book1Quantity >= book1Stock || !book1Available" 
+                (click)="increaseBook1Quantity()">
+                <span>+</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       
+      <!-- Book 2: Enhanced styling -->
       <div class="book-card">
         <div class="book-image">
-          <img src="https://via.placeholder.com/200x300?text=To+Kill+a+Mockingbird" alt="To Kill a Mockingbird" />
+          <img [src]="book2Image" [alt]="book2Title" />
+          <div class="book-badge" *ngIf="book2Available">Available</div>
         </div>
         <div class="book-info">
-          <h3>To Kill a Mockingbird</h3>
-          <p>by Harper Lee</p>
-          <p class="price">$14.99</p>
-          <button>Add to Cart</button>
+          <h3>{{ book2Title }}</h3>
+          <p class="author">by {{ book2Author }}</p>
+          <p class="description">{{ book2Description }}</p>
+          <div class="price-stock">
+            <span class="price">${{ book2Price }}</span>
+            <span class="stock">{{ book2Stock }} in stock</span>
+          </div>
+          
+          <div class="quantity-section">
+            <div class="quantity-controls">
+              <button 
+                class="qty-btn decrease" 
+                [disabled]="book2Quantity <= 0" 
+                (click)="decreaseBook2Quantity()">
+                <span>−</span>
+              </button>
+              
+              <div class="quantity-display">
+                <span class="qty-number">{{ book2Quantity }}</span>
+                <span class="qty-label">qty</span>
+              </div>
+              
+              <button 
+                class="qty-btn increase" 
+                [disabled]="book2Quantity >= book2Stock || !book2Available" 
+                (click)="increaseBook2Quantity()">
+                <span>+</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="book-card">
+      <!-- Book 3: Out of stock styling -->
+      <div class="book-card out-of-stock-card">
         <div class="book-image">
-          <img src="https://via.placeholder.com/200x300?text=Harry+Potter" alt="Harry Potter" />
+          <img [src]="book3Image" [alt]="book3Title" />
+          <div class="book-badge unavailable">Out of Stock</div>
         </div>
         <div class="book-info">
-          <h3>Harry Potter and the Philosopher's Stone</h3>
-          <p>by J.K. Rowling</p>
-          <p class="price">$16.99</p>
-          <button>Add to Cart</button>
+          <h3>{{ book3Title }}</h3>
+          <p class="author">by {{ book3Author }}</p>
+          <p class="description">{{ book3Description }}</p>
+          <div class="price-stock">
+            <span class="price">${{ book3Price }}</span>
+            <span class="stock unavailable">Currently unavailable</span>
+          </div>
+          
+          <div class="quantity-section">
+            <div class="quantity-controls disabled">
+              <button class="qty-btn decrease" [disabled]="true">
+                <span>−</span>
+              </button>
+              
+              <div class="quantity-display">
+                <span class="qty-number">{{ book3Quantity }}</span>
+                <span class="qty-label">qty</span>
+              </div>
+              
+              <button class="qty-btn increase" [disabled]="true">
+                <span>+</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
