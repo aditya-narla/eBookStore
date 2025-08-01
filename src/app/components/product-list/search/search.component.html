@@ -1,0 +1,30 @@
+<!-- Two-way Data Binding: Search Component Template -->
+<div class="search-section">
+  <div class="search-container">
+    <div class="search-box">
+      <!-- Two-way Data Binding using [(ngModel)] -->
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search books by title, author, or description..."
+        [(ngModel)]="searchText"
+        (ngModelChange)="onSearchChange($event)">
+      
+      <div class="search-actions">
+        <button 
+          class="clear-btn" 
+          *ngIf="searchText && searchText.length > 0"
+          (click)="clearSearch()"
+          title="Clear search">
+          ✕
+        </button>
+      </div>
+    </div>
+    
+    <!-- Search Results Info -->
+    <div class="search-info" *ngIf="searchText && searchText.length > 0">
+      <span class="results-count">{{ visibleBooksCount }} book(s) found</span>
+      <span class="search-term">for "{{ searchText }}"</span>
+    </div>
+  </div>
+</div>

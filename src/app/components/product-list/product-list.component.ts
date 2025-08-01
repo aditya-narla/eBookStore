@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SearchComponent } from './search/search.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [],
+  imports: [CommonModule, SearchComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
   // Component properties for data binding
   sectionTitle = 'Bestselling Books';
+  
+  // Two-way Data Binding property for search - will be bound to search component
+  searchText = ''; // This will be bound to the search component using [(searchText)]
   
   // First book data
   book1Title = 'The Great Gatsby';
@@ -79,5 +84,46 @@ export class ProductListComponent {
     if (this.book3Quantity > 0) {
       this.book3Quantity--;
     }
+  }
+
+  // Two-way Data Binding Methods for Search Functionality
+  
+  // Method to check if a book matches the search criteria
+  bookMatchesSearch(title: string, author: string, description: string): boolean {
+    if (!this.searchText || this.searchText.trim() === '') {
+      return true; // Show all books when no search text
+    }
+    
+    const searchLower = this.searchText.toLowerCase();
+    return title.toLowerCase().includes(searchLower) ||
+           author.toLowerCase().includes(searchLower) ||
+           description.toLowerCase().includes(searchLower);
+  }
+
+  // Getter methods to determine which books should be displayed
+  get showBook1(): boolean {
+    return this.bookMatchesSearch(this.book1Title, this.book1Author, this.book1Description);
+  }
+
+  get showBook2(): boolean {
+    return this.bookMatchesSearch(this.book2Title, this.book2Author, this.book2Description);
+  }
+
+  get showBook3(): boolean {
+    return this.bookMatchesSearch(this.book3Title, this.book3Author, this.book3Description);
+  }
+
+  // Method to get the count of visible books
+  get visibleBooksCount(): number {
+    let count = 0;
+    if (this.showBook1) count++;
+    if (this.showBook2) count++;
+    if (this.showBook3) count++;
+    return count;
+  }
+
+  // Method to clear search - for use in no-results section
+  clearSearch(): void {
+    this.searchText = ''; // This will automatically update the search component
   }
 }

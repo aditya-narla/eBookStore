@@ -3,9 +3,16 @@
     <!-- String Interpolation: Display dynamic title -->
     <h2>{{ sectionTitle }}</h2>
     
+    <!-- Two-way Data Binding: Search Component -->
+    <!-- Using custom two-way binding syntax [(searchText)] -->
+    <app-search 
+      [(searchText)]="searchText"
+      [visibleBooksCount]="visibleBooksCount">
+    </app-search>
+    
     <div class="books-grid">
       <!-- Book 1: Enhanced styling with better content -->
-      <div class="book-card">
+      <div class="book-card" *ngIf="showBook1">
         <div class="book-image">
           <img [src]="book1Image" [alt]="book1Title" />
           <div class="book-badge" *ngIf="book1Available">Available</div>
@@ -46,7 +53,7 @@
       </div>
       
       <!-- Book 2: Enhanced styling -->
-      <div class="book-card">
+      <div class="book-card" *ngIf="showBook2">
         <div class="book-image">
           <img [src]="book2Image" [alt]="book2Title" />
           <div class="book-badge" *ngIf="book2Available">Available</div>
@@ -86,7 +93,7 @@
       </div>
       
       <!-- Book 3: Out of stock styling -->
-      <div class="book-card out-of-stock-card">
+      <div class="book-card out-of-stock-card" *ngIf="showBook3">
         <div class="book-image">
           <img [src]="book3Image" [alt]="book3Title" />
           <div class="book-badge unavailable">Out of Stock</div>
@@ -117,6 +124,16 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    
+    <!-- No results message when search returns no matches -->
+    <div class="no-results" *ngIf="searchText && searchText.length > 0 && visibleBooksCount === 0">
+      <div class="no-results-content">
+        <div class="no-results-icon">📚</div>
+        <h3>No books found</h3>
+        <p>No books match your search for "<strong>{{ searchText }}</strong>"</p>
+        <button class="clear-search-btn" (click)="clearSearch()">Clear Search</button>
       </div>
     </div>
   </div>
