@@ -1,0 +1,61 @@
+/* Top Menu Styles - Utility Links */
+.top-menu {
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.top-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 400;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  transition: color 0.2s ease;
+}
+
+.top-link:hover {
+  color: #1f2937;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+    justify-content: center;
+  }
+  
+  .top-links {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .top-link {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-links {
+    gap: 0.75rem;
+  }
+  
+  .top-link {
+    font-size: 0.75rem;
+  }
+}
