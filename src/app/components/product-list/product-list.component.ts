@@ -88,16 +88,14 @@ export class ProductListComponent {
 
   // Two-way Data Binding Methods for Search Functionality
   
-  // Method to check if a book matches the search criteria
+  // Method to check if a book matches the search criteria - Title only
   bookMatchesSearch(title: string, author: string, description: string): boolean {
     if (!this.searchText || this.searchText.trim() === '') {
       return true; // Show all books when no search text
     }
     
     const searchLower = this.searchText.toLowerCase();
-    return title.toLowerCase().includes(searchLower) ||
-           author.toLowerCase().includes(searchLower) ||
-           description.toLowerCase().includes(searchLower);
+    return title.toLowerCase().includes(searchLower);
   }
 
   // Getter methods to determine which books should be displayed
