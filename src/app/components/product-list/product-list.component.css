@@ -1,0 +1,79 @@
+/* Simple Product List Styles */
+.product-list {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 40px;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.book-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-image {
+  width: 100%;
+  height: 250px;
+}
+
+.book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-info {
+  padding: 20px;
+}
+
+.book-info h3 {
+  font-size: 1.2rem;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.book-info p {
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 15px 0 !important;
+}
+
+button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
